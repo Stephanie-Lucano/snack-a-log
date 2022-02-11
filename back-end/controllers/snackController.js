@@ -1,6 +1,11 @@
 const express = require("express");
 const snacks = express();
-const { getAllSnacks, getSnack } = require("../queries/snacks");
+const { 
+  getAllSnacks, 
+  getSnack,
+  deleteSnack,
+  
+} = require("../queries/snacks");
 
 snacks.get("/", async (_, response) => {
   console.log("GET request to /snacks");
@@ -13,5 +18,11 @@ snacks.get("/:id", async (request, response) => {
   const getOne = await getSnack(request.params.id);
   response.status(200).json(getOne);
 });
+
+snacks.delete("/:id", async(request, response) => {
+  console.log("DELETE request to /snacks/:id")
+  const deleteOne = await deleteSnack(request.params.id)
+  response.status(200).json(deleteOne)
+})
 
 module.exports = snacks;
