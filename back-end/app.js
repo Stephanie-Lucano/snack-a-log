@@ -5,6 +5,7 @@ const snacksController = require("./controllers/snackController");
 
 // CONFIGURATION
 const app = express();
+app.use(express.json());
 
 // MIDDLEWARE
 app.use("/snacks", snacksController);
