@@ -4,7 +4,8 @@ const { getAllSnacks } = require("../queries/snacks");
 
 snacks.get("/", async (_, response) => {
   console.log("GET request to /snacks");
-  response.status(200).json(await getAllSnacks());
+  const allSnacks = await getAllSnacks();
+  response.status(200).json(allSnacks);
 });
 
 module.exports = snacks;
