@@ -27,8 +27,19 @@ const deleteSnack = async (id) => {
   }
 }
 
+const updateSnack = async (id, snacks) => {
+  try {
+    const {name, fiber, protein, added_sugar, is_healthy, image} = snacks
+    const update = await db.one("UPDATE snacks SET name=$2, fiber=$3, protein=$4, added_sugar=$5, is_healthy=$6, image=$7 WHERE id=$1 RETURNING *", [id, name, fiber, protein, added_sugar, is_healthy, image])
+    return update
+  } catch (error) {
+    return error
+  }
+}
+
 module.exports = {
   getAllSnacks,
   getSnack,
-  deleteSnack
+  deleteSnack,
+  updateSnack
 };
