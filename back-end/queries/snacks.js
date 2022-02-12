@@ -37,9 +37,20 @@ const updateSnack = async (id, snacks) => {
   }
 }
 
+const postSnack = async (snacks) => {
+  try {
+    const {name, fiber, protein, added_sugar, is_healthy, image} = snacks
+    const post = await db.one("INSERT INTO snacks (name, fiber, protein, added_sugar, is_healthy, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [name, fiber, protein, added_sugar, is_healthy, image])
+    return post
+  } catch (error) {
+    return error
+  }
+}
+
 module.exports = {
   getAllSnacks,
   getSnack,
   deleteSnack,
-  updateSnack
+  updateSnack,
+  postSnack
 };
