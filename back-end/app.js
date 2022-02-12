@@ -14,7 +14,7 @@ app.use("/snacks", snacksController);
 
 app.get("/", (_, response) => {
   console.log("GET request to /");
-  response.status(200).send("Hello world!");
+  response.status(200).send("Get Snack'n at Snack-a-log!");
 });
 
 app.get("*", (_, response) => {
