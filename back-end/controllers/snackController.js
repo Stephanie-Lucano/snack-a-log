@@ -4,7 +4,8 @@ const {
   getAllSnacks, 
   getSnack,
   deleteSnack,
-  updateSnack
+  updateSnack,
+  postSnack
 } = require("../queries/snacks");
 
 snacks.get("/", async (_, response) => {
@@ -29,6 +30,12 @@ snacks.put("/:id", async (request, response) => {
   console.log("UPDATE request to /snacks/:id")
   const update = await updateSnack(request.params.id, request.body)
   response.status(200).json(update)
+})
+
+snacks.post("/", async (request, response) => {
+  console.log("POST request to /snacks")
+  const post = await postSnack(request.body)
+  response.status(200).json(post)
 })
 
 module.exports = snacks;
