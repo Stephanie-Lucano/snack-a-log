@@ -46,15 +46,35 @@ const updateSnack = async (id, snacks) => {
 const postSnack = async (snacks) => {
   try {
     const { name, fiber, protein, added_sugar, is_healthy, image } = snacks;
+    
+    const newName = name.toLowerCase().split(" ").map((word) => { 
+        return word.length <= 2 
+        ? word 
+        : word[0].toUpperCase() + word.slice(1)
+      }).join(" ")
+    
     const post = await db.one(
       "INSERT INTO snacks (name, fiber, protein, added_sugar, is_healthy, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [name, fiber, protein, added_sugar, is_healthy, image]
+      [newName, fiber, protein, added_sugar, is_healthy, image || "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image"]
     );
     return post;
   } catch (error) {
     return error;
   }
 };
+
+console.log(postSnack({
+  "id": 1,
+  "name": "banana",
+  "name": "spiders on a log",
+  "name": "COMBOS",
+  "name": "FLAMIN' hot Cheetoes", 
+  "fiber": 20,
+  "protein": 10,
+  "added_sugar": 0,
+  "is_healthy": true,
+  "image": null
+},))
 
 module.exports = {
   getAllSnacks,
