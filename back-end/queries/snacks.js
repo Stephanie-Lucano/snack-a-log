@@ -74,7 +74,7 @@ console.log(postSnack({
   "added_sugar": 0,
   "is_healthy": true,
   "image": null
-},))
+}))
 
 module.exports = {
   getAllSnacks,
