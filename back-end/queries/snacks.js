@@ -63,19 +63,6 @@ const postSnack = async (snacks) => {
   }
 };
 
-console.log(postSnack({
-  "id": 1,
-  "name": "banana",
-  "name": "spiders on a log",
-  "name": "COMBOS",
-  "name": "FLAMIN' hot Cheetoes", 
-  "fiber": 20,
-  "protein": 10,
-  "added_sugar": 0,
-  "is_healthy": true,
-  "image": null
-}))
-
 module.exports = {
   getAllSnacks,
   getSnack,
