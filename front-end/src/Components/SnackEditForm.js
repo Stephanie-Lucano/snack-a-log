@@ -18,7 +18,7 @@ export default function SnackEditForm() {
   useEffect(() => {
     axios
       .get(`${URL}/snacks/${id}`)
-      .then((response) => setSnack(response.data));
+      .then((response) => setSnack(response.data.payload));
   }, [URL, id]);
 
   const handleSubmit = (event) => {
@@ -43,7 +43,6 @@ export default function SnackEditForm() {
     <div>
       <div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
           <label htmlFor="isHealthy">Is it healthy</label>
           <input
             id="isHealthy"
@@ -51,6 +50,7 @@ export default function SnackEditForm() {
             onChange={handleCheckboxChange}
             checked={snack.is_favorite}
           />
+          <label htmlFor="name">Name</label>
           <input
             id="name"
             value={snack.name}
@@ -60,28 +60,28 @@ export default function SnackEditForm() {
           <label htmlFor="image">Image</label>
           <input
             id="image"
-            type="text"
+            value={snack.image}
+            type="url"
             onChange={handleTextChange}
-            checked={snack.image}
           />
           <label htmlFor="fiber">Fiber</label>
           <input
             id="fiber"
-            value={snack.artist}
+            value={snack.fiber}
             type="number"
             onChange={handleTextChange}
           />
           <label htmlFor="protein">Protein</label>
           <input
             id="protein"
-            value={snack.album}
+            value={snack.protein}
             type="number"
             onChange={handleTextChange}
           />
           <label htmlFor="addedSugar">Added Sugar</label>
           <input
             id="addedSugar"
-            value={snack.time}
+            value={snack.added_sugar}
             type="number"
             onChange={handleTextChange}
           />
