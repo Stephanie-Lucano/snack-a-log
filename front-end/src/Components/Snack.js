@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
+import HeartHealth from "./HeartHealth";
 
-export default function Snack() {
-    return (
-        <div>
-            <p>List of snacks</p>
-            <p>Snack name, is_healthy, image</p>
-            <Link to="/snacks/:id">
-                <button>View 🔍</button>
-            </Link>
-        </div>
-    )
+export default function Snack({ snack }) {
+  return (
+    <div>
+      <img src={snack.image} />
+      <HeartHealth snack={snack.is_healthy} />
+      <Link to={`/snacks/${snack.id}`}>
+        <p>{snack.name}</p>
+      </Link>
+    </div>
+  );
 }
