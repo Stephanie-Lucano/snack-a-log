@@ -23,9 +23,7 @@ export default function SnackEditForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .put(`${URL}/snacks/${id}`, snack)
-      .then(() => navigate(`/snacks/${id}`));
+    axios.put(`${URL}/snacks/${id}`, snack).then(() => navigate(`/snacks`));
   };
 
   const handleTextChange = (event) => {
@@ -41,56 +39,55 @@ export default function SnackEditForm() {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="isHealthy">Is it healthy</label>
-          <input
-            id="isHealthy"
-            type="checkbox"
-            onChange={handleCheckboxChange}
-            checked={snack.is_favorite}
-          />
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            value={snack.name}
-            type="text"
-            onChange={handleTextChange}
-          />
-          <label htmlFor="image">Image</label>
-          <input
-            id="image"
-            value={snack.image}
-            type="url"
-            onChange={handleTextChange}
-          />
-          <label htmlFor="fiber">Fiber</label>
-          <input
-            id="fiber"
-            value={snack.fiber}
-            type="number"
-            onChange={handleTextChange}
-          />
-          <label htmlFor="protein">Protein</label>
-          <input
-            id="protein"
-            value={snack.protein}
-            type="number"
-            onChange={handleTextChange}
-          />
-          <label htmlFor="addedSugar">Added Sugar</label>
-          <input
-            id="addedSugar"
-            value={snack.added_sugar}
-            type="number"
-            onChange={handleTextChange}
-          />
-          <input type="submit" />
-        </form>
-        <Link to={`/snacks/${id}`}>
-          <button>Back</button>
-        </Link>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="isHealthy">Is it healthy</label>
+        <input
+          id="isHealthy"
+          type="checkbox"
+          onChange={handleCheckboxChange}
+          checked={snack.is_healthy}
+        />
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          value={snack.name}
+          type="text"
+          onChange={handleTextChange}
+          required
+        />
+        <label htmlFor="image">Image</label>
+        <input
+          id="image"
+          value={snack.image}
+          type="text"
+          onChange={handleTextChange}
+        />
+        <label htmlFor="fiber">Fiber</label>
+        <input
+          id="fiber"
+          value={snack.fiber}
+          type="number"
+          onChange={handleTextChange}
+        />
+        <label htmlFor="protein">Protein</label>
+        <input
+          id="protein"
+          value={snack.protein}
+          type="number"
+          onChange={handleTextChange}
+        />
+        <label htmlFor="added_sugar">Added Sugar</label>
+        <input
+          id="added_sugar"
+          value={snack.added_sugar}
+          type="number"
+          onChange={handleTextChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <Link to={`/snacks/${id}`}>
+        <button>Back</button>
+      </Link>
     </div>
   );
 }

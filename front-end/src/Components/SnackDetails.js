@@ -29,20 +29,26 @@ export default function SnackDetails() {
   };
 
   return (
-    <div>
-      <HeartHealth snackHealth={snack.is_healthy} />
-      <h2>{snack.name}</h2>
-      <img src={snack.image} alt={snack.name} />
-      <p>Protein: {snack.protein}</p>
-      <p>Fiber: {snack.fiber}</p>
-      <p>Added Sugar: {snack.added_sugar}</p>
-      <Link to="/snacks">
-        <button>Back</button>
-      </Link>
-      <Link to={`/snacks/${snack.id}/edit`}>
-        <button>Edit</button>
-      </Link>
+    <article>
+      <aside>
+        <HeartHealth snackHealth={snack.is_healthy} />
+      </aside>
+      <div>
+        <h5>{snack.name}</h5>
+        <img src={snack.image} alt={snack.name} />
+        <h6>Protein: {snack.protein}</h6>
+        <h6>Fiber: {snack.fiber}</h6>
+        <h6>Added Sugar: {snack.added_sugar}</h6>
+      </div>
+      <div className="showNavigation">
+        <a href="/snacks">
+          <button>Back</button>
+        </a>
+        <Link to={`/snacks/${snack.id}/edit`}>
+          <button>Edit</button>
+        </Link>
+      </div>
       <button onClick={handleDelete}>Delete</button>
-    </div>
+    </article>
   );
 }
