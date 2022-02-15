@@ -1,11 +1,12 @@
 // DEPENDENCIES
-
+const cors = require("cors");
 const express = require("express");
 const snacksController = require("./controllers/snackController");
 
 // CONFIGURATION
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // MIDDLEWARE
 app.use("/snacks", snacksController);
