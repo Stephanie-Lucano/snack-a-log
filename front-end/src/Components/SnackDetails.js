@@ -12,7 +12,7 @@ export default function SnackDetails() {
   useEffect(() => {
     axios
       .get(`${URL}/snacks/${id}`)
-      .then((response) => setSnack(response.data))
+      .then((response) => setSnack(response.data.payload))
       .catch((error) => console.warn(error));
   }, [URL, id]);
 
@@ -30,9 +30,9 @@ export default function SnackDetails() {
 
   return (
     <div>
-      <HeartHealth />
+      <HeartHealth snackHealth={snack.is_healthy} />
       <h2>{snack.name}</h2>
-      <p>{snack.image}</p>
+      <img src={snack.image} alt={snack.name} />
       <p>Protein: {snack.protein}</p>
       <p>Fiber: {snack.fiber}</p>
       <p>Added Sugar: {snack.added_sugar}</p>
