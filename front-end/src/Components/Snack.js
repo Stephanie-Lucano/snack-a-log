@@ -4,10 +4,10 @@ import HeartHealth from "./HeartHealth";
 export default function Snack({ snack }) {
   return (
     <div>
-      <img src={snack.image} alt={snack.name} />
+      <img src={snack.image} alt="healthy food" />
       <HeartHealth snackHealth={snack.is_healthy} />
       <Link to={`/snacks/${snack.id}`}>
-        <p>{snack.name}</p>
+        <h4>{snack.name}</h4>
       </Link>
     </div>
   );

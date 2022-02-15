@@ -14,14 +14,16 @@ export default function Snacks() {
   }, [URL]);
 
   return (
-    <div>
-      <article>
-        <div>
-          {snacks.map((snack) => {
-            return <Snack key={snack.id} snack={snack} />;
-          })}
-        </div>
-      </article>
-    </div>
+    <main>
+      <section className="Snacks">
+        <article className="Snack">
+          <div className="Snacks">
+            {snacks.map((snack) => {
+              return <Snack ket={snack.id} snack={snack} />;
+            })}
+          </div>
+        </article>
+      </section>
+    </main>
   );
 }
