@@ -9,8 +9,9 @@ export default function SnackEditForm() {
 
   const [snack, setSnack] = useState({
     name: "",
-    fiber: "",
-    added_sugar: "",
+    fiber: 0,
+    protein: 0,
+    added_sugar: 0,
     is_healthy: false,
     image: "",
   });
@@ -27,10 +28,12 @@ export default function SnackEditForm() {
   };
 
   const handleTextChange = (event) => {
+    event.preventDefault();
     setSnack({ ...snack, [event.target.id]: [event.target.value] });
   };
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = (event) => {
+    event.preventDefault();
     setSnack({
       ...snack,
       is_healthy: !snack.is_healthy,
@@ -40,9 +43,9 @@ export default function SnackEditForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="isHealthy">Is it healthy</label>
+        <label htmlFor="is_healthy">Is it healthy</label>
         <input
-          id="isHealthy"
+          id="is_healthy"
           type="checkbox"
           onChange={handleCheckboxChange}
           checked={snack.is_healthy}
@@ -83,7 +86,7 @@ export default function SnackEditForm() {
           type="number"
           onChange={handleTextChange}
         />
-        <button type="submit">Submit</button>
+        <input type="submit"/>
       </form>
       <Link to={`/snacks/${id}`}>
         <button>Back</button>
