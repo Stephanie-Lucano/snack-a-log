@@ -1,5 +1,6 @@
 const db = require("../db/dbConfig.js");
 
+// test
 const getAllSnacks = async () => {
   try {
     const getAll = await db.any("SELECT * FROM snacks");
